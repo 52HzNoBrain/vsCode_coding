@@ -1,0 +1,107 @@
+{
+    "name": "vsc-plugin-demo",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.8.3"
+    },
+    "activationEvents": [],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "plugin.login",
+                "title": "aia:login"
+            },
+            {
+                "command": "plugin.loginOut",
+                "title": "aia:login out"
+            },
+            {
+                "command": "aia.getInfo",
+                "title": "aia.getInfo"
+            },
+            {
+                "command": "aia.setInfo",
+                "title": "aia.setInfo"
+            }
+        ],
+        "configuration": [
+            {
+                "title": "aia",
+                "properties": {
+                    "aia.beforeCursor": {
+                        "type": "number",
+                        "default": 20,
+                        "description": "Number of lines before scanning the cursor",
+                        "order": 4
+                    },
+                    "aia.afterCursor": {
+                        "type": "number",
+                        "default": 20,
+                        "description": "Number of lines after scanning the cursor",
+                        "order": 5
+                    },
+                    "aia.authorization": {
+                        "type": "string",
+                        "description": "Large Language Model Access Token Authorization",
+                        "order": 3
+                    },
+                    "aia.serverAddress": {
+                        "type": "string",
+                        "default": "http://10.207.34.11:8022/generate",
+                        "description": "Large Language Model Access Request Url",
+                        "order": 2
+                    },
+                    "aia.AutoTriggerCompletion": {
+                        "description": "Whether or not to automatically trigger completion when typing.",
+                        "default": true,
+                        "type": "boolean",
+                        "order": 1
+                    },
+                    "aia.AutoCompletionDelay": {
+                        "description": "The delay in seconds before automatic code completion triggers.",
+                        "type": "number",
+                        "enum": [
+                            1,
+                            2,
+                            3
+                        ],
+                        "default": 1,
+                        "order": 7
+                    },
+                    "aia.CompletionMaxTokens": {
+                        "description": "Maximum number of tokens for which suggestions will be displayed",
+                        "type": "number",
+                        "enum": [
+                            64,
+                            128,
+                            256,
+                            512,
+                            1024
+                        ],
+                        "default": 64,
+                        "order": 7
+                    },
+                    "aia.ChatMaxTokens": {
+                        "description": "Maximum number of tokens for which chat messages will be displayed",
+                        "type": "number",
+                        "enum": [
+                            1024,
+                            2048,
+                            4096,
+                            8192
+                        ],
+                        "default": 1024,
+                        "order": 8
+                    }
+                }
+            }
+        ]
+    },
+    "dependencies": {
+        "@vscode/vsce": "^2.22.0",
+        "axios": "^1.6.2",
+        "lodash": "^4.17.21",
+        "vscode": "^1.1.37"
+    }
+}
